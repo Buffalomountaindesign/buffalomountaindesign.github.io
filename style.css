@@ -536,7 +536,15 @@ footer {
 .footer-brand {
     font-size: 0.78rem;
     letter-spacing: 0.2em;
+    margin-bottom: 12px;
+}
+
+.footer-note {
+    max-width: 520px;
     margin-bottom: 38px;
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    color: #8f8a80;
 }
 
 .footer-links {
@@ -906,11 +914,221 @@ footer {
 }
 
 
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-page,
+.contact-page {
+    background: var(--warm-white);
+}
+
+.about-hero,
+.contact-hero {
+    padding: 120px 7vw 110px;
+    border-bottom: 1px solid var(--line);
+}
+
+.about-hero h1,
+.contact-hero h1 {
+    max-width: 1100px;
+    font-size: clamp(4rem, 7vw, 8rem);
+    line-height: 0.93;
+    letter-spacing: -0.05em;
+    margin-bottom: 45px;
+}
+
+.about-lead,
+.contact-lead {
+    max-width: 720px;
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    line-height: 1.9;
+    color: #625e55;
+}
+
+.about-roots {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 0.9fr)
+        minmax(0, 1.1fr);
+    gap: clamp(60px, 9vw, 150px);
+    padding: 120px 7vw;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+}
+
+.about-roots-heading h2 {
+    max-width: 620px;
+    font-size: clamp(2.6rem, 4.7vw, 5.2rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.about-roots-copy {
+    max-width: 720px;
+    padding-top: 35px;
+}
+
+.about-roots-copy p {
+    font-size: 1rem;
+    line-height: 1.95;
+    color: #625e55;
+}
+
+.about-roots-copy p + p {
+    margin-top: 32px;
+}
+
+.about-values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: var(--warm-white);
+}
+
+.about-value {
+    min-width: 0;
+    padding: 85px 5vw 100px;
+    border-bottom: 1px solid var(--line);
+}
+
+.about-value + .about-value {
+    border-left: 1px solid var(--line);
+}
+
+.about-value h3 {
+    max-width: 380px;
+    margin-bottom: 26px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.7rem, 2.5vw, 2.8rem);
+    line-height: 1.08;
+}
+
+.about-value p:not(.eyebrow) {
+    max-width: 460px;
+    color: #6b665d;
+    line-height: 1.85;
+}
+
+.about-cta {
+    padding: 115px 7vw 125px;
+    background: #272720;
+    color: #f6f3eb;
+}
+
+.about-cta .eyebrow {
+    color: #aaa496;
+}
+
+.about-cta h2 {
+    max-width: 800px;
+    margin-bottom: 40px;
+    font-size: clamp(3rem, 5vw, 6rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+}
+
+.about-cta .button {
+    background: #f4f0e8;
+    color: #23221e;
+}
+
+.about-cta .button:hover {
+    background: #fff;
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--line);
+    background: var(--cream);
+}
+
+.contact-card {
+    min-width: 0;
+    padding: 85px 5vw 100px;
+}
+
+.contact-card + .contact-card {
+    border-left: 1px solid var(--line);
+}
+
+.contact-card h2 {
+    max-width: 400px;
+    margin-bottom: 25px;
+    font-size: clamp(2rem, 3vw, 3.4rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+}
+
+.contact-card p:not(.eyebrow) {
+    max-width: 440px;
+    color: #6a655c;
+    line-height: 1.85;
+}
+
+.contact-details {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 0.7fr);
+    gap: 80px;
+    padding: 100px 7vw 120px;
+    background: var(--warm-white);
+}
+
+.contact-details h2 {
+    max-width: 700px;
+    font-size: clamp(2.6rem, 4.3vw, 4.8rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.contact-details > p {
+    max-width: 520px;
+    align-self: end;
+    color: #6b665d;
+    line-height: 1.85;
+}
+
+
+
 /* =========================================================
    TABLET
    ========================================================= */
 
 @media (max-width: 1000px) {
+
+    .about-roots {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .about-roots-copy {
+        padding-top: 0;
+    }
+
+    .about-values,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-value + .about-value,
+    .contact-card + .contact-card {
+        border-left: none;
+        border-top: 1px solid var(--line);
+    }
+
+    .contact-details {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
 
     .hero-carousel {
         grid-template-columns: 1fr;
@@ -987,6 +1205,35 @@ footer {
    ========================================================= */
 
 @media (max-width: 700px) {
+
+    .about-hero,
+    .contact-hero {
+        padding: 80px 7vw 75px;
+    }
+
+    .about-hero h1,
+    .contact-hero h1 {
+        font-size: clamp(3.2rem, 14vw, 5.2rem);
+        margin-bottom: 32px;
+    }
+
+    .about-roots {
+        padding: 80px 7vw;
+    }
+
+    .about-value,
+    .contact-card {
+        padding: 65px 7vw 75px;
+    }
+
+    .about-cta {
+        padding: 80px 7vw 90px;
+    }
+
+    .contact-details {
+        padding: 75px 7vw 90px;
+    }
+
 
     .site-header {
         padding: 25px 6vw;
