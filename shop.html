@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shop | Buffalo Mountain Design</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="products.js" defer></script>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a href="index.html" class="brand">
+        BUFFALO MOUNTAIN DESIGN
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+</header>
+
+
+<main class="shop-page">
+
+    <section class="shop-intro">
+
+        <p class="eyebrow">THE COLLECTION</p>
+
+        <h1>Shop</h1>
+
+        <p>
+            Explore handcrafted jewelry, beadwork and small-scale works
+            from Buffalo Mountain Design.
+        </p>
+
+    </section>
+
+
+    <section class="shop-controls">
+
+        <div class="filter-buttons">
+
+            <button
+                class="filter-button active"
+                data-filter="all"
+                type="button">
+                All
+            </button>
+
+            <button
+                class="filter-button"
+                data-filter="earrings"
+                type="button">
+                Earrings
+            </button>
+
+            <button
+                class="filter-button"
+                data-filter="necklaces"
+                type="button">
+                Necklaces
+            </button>
+
+            <button
+                class="filter-button"
+                data-filter="bracelets"
+                type="button">
+                Bracelets
+            </button>
+
+            <button
+                class="filter-button"
+                data-filter="art"
+                type="button">
+                Art + Other
+            </button>
+
+        </div>
+
+
+        <div class="shop-search">
+
+            <label for="product-search">
+                Search
+            </label>
+
+            <input
+                id="product-search"
+                type="search"
+                placeholder="Search pieces..."
+                autocomplete="off">
+
+        </div>
+
+    </section>
+
+
+    <section class="shop-results">
+
+        <div
+            id="product-grid"
+            class="shop-product-grid">
+        </div>
+
+        <p
+            id="shop-empty"
+            class="shop-empty"
+            hidden>
+            No pieces match your search.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-brand">
+        BUFFALO MOUNTAIN DESIGN
+    </div>
+
+    <div class="footer-links">
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <p class="copyright">
+        © 2026 Buffalo Mountain Design
+    </p>
+
+</footer>
+
+</body>
+</html>
