@@ -4,51 +4,51 @@ const products = [
         name: "Beaded Necklace 01",
         category: "necklaces",
         price: "$—",
-        image: "assets/images/necklace-1.png"
+        image: "assets/images/necklace-1.png",
+        featured: true
     },
 
     {
         name: "Beaded Necklace 02",
         category: "necklaces",
         price: "$—",
-        image: "assets/images/necklace-2.png"
+        image: "assets/images/necklace-2.png",
+        featured: true
     },
 
     {
         name: "Beaded Necklace 03",
         category: "necklaces",
         price: "$—",
-        image: "assets/images/necklace-3.png"
+        image: "assets/images/necklace-3.png",
+        featured: true
     },
 
     {
         name: "Beaded Necklace 04",
         category: "necklaces",
         price: "$—",
-        image: "assets/images/necklace-4.png"
+        image: "assets/images/necklace-4.png",
+        featured: false
     },
 
     {
         name: "Beaded Necklace 05",
         category: "necklaces",
         price: "$—",
-        image: "assets/images/necklace-5.png"
+        image: "assets/images/necklace-5.png",
+        featured: false
     },
 
     {
         name: "Beaded Necklace 06",
         category: "necklaces",
         price: "$—",
-        image: "assets/images/necklace-6.png"
+        image: "assets/images/necklace-6.png",
+        featured: false
     }
 
 ];
-
-
-const grid = document.getElementById("product-grid");
-const searchInput = document.getElementById("product-search");
-const filterButtons = document.querySelectorAll(".filter-button");
-const emptyMessage = document.getElementById("shop-empty");
 
 
 const categoryNames = {
@@ -58,187 +58,328 @@ const categoryNames = {
     art: "Art + Other"
 };
 
-/* Hide category filters that currently have no products */
 
-filterButtons.forEach(button => {
+/* =========================================================
+   SHOP PAGE
+   ========================================================= */
 
-    const category = button.dataset.filter;
-
-    // Always keep the "All" button
-    if (category === "all") {
-        return;
-    }
-
-    const categoryHasProducts =
-        products.some(product =>
-            product.category === category
-        );
-
-    if (!categoryHasProducts) {
-        button.hidden = true;
-    }
-
-});
-
-let activeCategory = "all";
+const grid = document.getElementById("product-grid");
+const searchInput = document.getElementById("product-search");
+const filterButtons = document.querySelectorAll(".filter-button");
+const emptyMessage = document.getElementById("shop-empty");
 
 
-function renderProducts() {
+if (grid && searchInput && emptyMessage) {
 
-    const searchTerm = searchInput.value
-        .toLowerCase()
-        .trim();
+    let activeCategory = "all";
 
 
-    const filteredProducts = products.filter(product => {
+    /* Hide filters that currently have no products */
 
-        const matchesCategory =
-            activeCategory === "all" ||
-            product.category === activeCategory;
+    filterButtons.forEach(button => {
 
+        const category = button.dataset.filter;
 
-        const matchesSearch =
-            product.name.toLowerCase().includes(searchTerm) ||
-            categoryNames[product.category]
-                .toLowerCase()
-                .includes(searchTerm);
+        if (category === "all") {
+            return;
+        }
 
+        const categoryHasProducts =
+            products.some(product =>
+                product.category === category
+            );
 
-        return matchesCategory && matchesSearch;
+        if (!categoryHasProducts) {
+            button.hidden = true;
+        }
 
     });
 
 
-    grid.innerHTML = "";
+    function renderProducts() {
+
+        const searchTerm = searchInput.value
+            .toLowerCase()
+            .trim();
 
 
-    if (filteredProducts.length === 0) {
+        const filteredProducts = products.filter(product => {
 
-        emptyMessage.hidden = false;
-
-        return;
-
-    }
+            const matchesCategory =
+                activeCategory === "all" ||
+                product.category === activeCategory;
 
 
-    emptyMessage.hidden = true;
+            const matchesSearch =
+                product.name.toLowerCase().includes(searchTerm) ||
+                categoryNames[product.category]
+                    .toLowerCase()
+                    .includes(searchTerm);
 
 
-    filteredProducts.forEach(product => {
+            return matchesCategory && matchesSearch;
 
-        const card = document.createElement("article");
-
-        card.className = "shop-product-card";
+        });
 
 
-        let imageMarkup;
+        grid.innerHTML = "";
 
 
-        if (product.image) {
+        if (filteredProducts.length === 0) {
 
-            imageMarkup = `
-                <div class="shop-product-image">
-                    <img
-                        src="${product.image}"
-                        alt="${product.name}">
-                </div>
-            `;
+            emptyMessage.hidden = false;
 
-        } else {
-
-            imageMarkup = `
-                <div class="shop-product-image placeholder"></div>
-            `;
+            return;
 
         }
 
 
+        emptyMessage.hidden = true;
+
+
+        filteredProducts.forEach(product => {
+
+            const card = document.createElement("article");
+
+            card.className = "shop-product-card";
+
+
+            card.innerHTML = `
+
+                <div class="shop-product-image">
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                        loading="lazy">
+                </div>
+
+                <p class="product-category">
+                    ${categoryNames[product.category]}
+                </p>
+
+                <h2>
+                    ${product.name}
+                </h2>
+
+                <p class="product-price">
+                    ${product.price}
+                </p>
+
+            `;
+
+
+            grid.appendChild(card);
+
+        });
+
+    }
+
+
+    function setCategory(category) {
+
+        activeCategory = category;
+
+
+        filterButtons.forEach(button => {
+
+            const isActive =
+                button.dataset.filter === category;
+
+            button.classList.toggle(
+                "active",
+                isActive
+            );
+
+        });
+
+
+        renderProducts();
+
+    }
+
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            setCategory(
+                button.dataset.filter
+            );
+
+        });
+
+    });
+
+
+    searchInput.addEventListener(
+        "input",
+        renderProducts
+    );
+
+
+    /* Read category links from homepage */
+
+    const urlParams =
+        new URLSearchParams(window.location.search);
+
+    const requestedCategory =
+        urlParams.get("category");
+
+
+    if (
+        requestedCategory &&
+        categoryNames[requestedCategory]
+    ) {
+
+        setCategory(requestedCategory);
+
+    } else {
+
+        setCategory("all");
+
+    }
+
+}
+
+
+/* =========================================================
+   HOMEPAGE CATEGORY COLLECTION
+   ========================================================= */
+
+const homeCategoryGrid =
+    document.getElementById("home-category-grid");
+
+
+if (homeCategoryGrid) {
+
+    const availableCategories =
+        [...new Set(
+            products.map(product => product.category)
+        )];
+
+
+    homeCategoryGrid.dataset.count =
+        availableCategories.length;
+
+
+    availableCategories.forEach(category => {
+
+        const categoryProduct =
+            products.find(
+                product =>
+                    product.category === category
+            );
+
+
+        const card =
+            document.createElement("a");
+
+
+        card.href =
+            `shop.html?category=${category}`;
+
+
+        card.className =
+            "category-card";
+
+
         card.innerHTML = `
 
-            ${imageMarkup}
+            <div class="category-image">
 
-            <p class="product-category">
-                ${categoryNames[product.category]}
-            </p>
+                <img
+                    src="${categoryProduct.image}"
+                    alt="${categoryNames[category]}">
 
-            <h2>
-                ${product.name}
-            </h2>
+            </div>
 
-            <p class="product-price">
-                ${product.price}
+            <h3>
+                ${categoryNames[category]}
+            </h3>
+
+            <p>
+                View Collection
             </p>
 
         `;
 
 
-        grid.appendChild(card);
+        homeCategoryGrid.appendChild(card);
 
     });
 
 }
 
 
-function setCategory(category) {
+/* =========================================================
+   HOMEPAGE FEATURED PRODUCTS
+   ========================================================= */
 
-    activeCategory = category;
+const featuredGrid =
+    document.getElementById("featured-grid");
 
 
-    filterButtons.forEach(button => {
+if (featuredGrid) {
 
-        const isActive =
-            button.dataset.filter === category;
-
-        button.classList.toggle(
-            "active",
-            isActive
+    let featuredProducts =
+        products.filter(
+            product => product.featured
         );
 
-    });
+
+    /*
+       If no products are manually marked as featured,
+       automatically use the first three.
+    */
+
+    if (featuredProducts.length === 0) {
+
+        featuredProducts =
+            products.slice(0, 3);
+
+    }
 
 
-    renderProducts();
+    featuredProducts
+        .slice(0, 3)
+        .forEach(product => {
 
-}
-
-
-filterButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        setCategory(
-            button.dataset.filter
-        );
-
-    });
-
-});
+            const card =
+                document.createElement("article");
 
 
-searchInput.addEventListener(
-    "input",
-    renderProducts
-);
+            card.className =
+                "product-card";
 
 
-/* Read category links from homepage */
+            card.innerHTML = `
 
-const urlParams =
-    new URLSearchParams(window.location.search);
+                <div class="product-image">
 
-const requestedCategory =
-    urlParams.get("category");
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                        loading="lazy">
+
+                </div>
+
+                <p class="product-category">
+                    ${categoryNames[product.category]}
+                </p>
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+                <p class="product-price">
+                    ${product.price}
+                </p>
+
+            `;
 
 
-if (
-    requestedCategory &&
-    categoryNames[requestedCategory]
-) {
+            featuredGrid.appendChild(card);
 
-    setCategory(requestedCategory);
-
-} else {
-
-    setCategory("all");
+        });
 
 }
