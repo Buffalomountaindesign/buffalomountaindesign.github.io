@@ -1,0 +1,569 @@
+/* =========================================================
+   BUFFALO MOUNTAIN DESIGN
+   Main Stylesheet
+   ========================================================= */
+
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f5f2eb;
+    color: #25241f;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+
+/* ---------- GLOBAL ---------- */
+
+:root {
+    --cream: #f5f2eb;
+    --warm-white: #fbfaf6;
+    --charcoal: #25241f;
+    --soft-black: #181814;
+    --stone: #a39b8c;
+    --line: #d9d3c7;
+    --accent: #725b3e;
+}
+
+.eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.23em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #746f65;
+    margin-bottom: 20px;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 400;
+}
+
+h1,
+h2 {
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* ---------- HEADER ---------- */
+
+.site-header {
+    width: 100%;
+    min-height: 92px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6vw;
+
+    border-bottom: 1px solid rgba(37, 36, 31, 0.12);
+
+    background: rgba(245, 242, 235, 0.96);
+
+    position: relative;
+    z-index: 10;
+}
+
+.brand {
+    font-size: 0.82rem;
+    letter-spacing: 0.19em;
+    font-weight: 600;
+}
+
+.site-header nav {
+    display: flex;
+    gap: 38px;
+}
+
+.site-header nav a {
+    font-size: 0.76rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    position: relative;
+}
+
+.site-header nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--charcoal);
+
+    transition: width 0.3s ease;
+}
+
+.site-header nav a:hover::after {
+    width: 100%;
+}
+
+
+/* ---------- HERO ---------- */
+
+.hero {
+    min-height: 78vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 9vw 8vw;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(25, 23, 18, 0.04),
+            rgba(25, 23, 18, 0)
+        ),
+        var(--warm-white);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: clamp(3.4rem, 7vw, 7.4rem);
+
+    line-height: 0.94;
+
+    letter-spacing: -0.045em;
+
+    margin-bottom: 40px;
+}
+
+.hero-description {
+    max-width: 530px;
+
+    font-size: 1rem;
+
+    line-height: 1.85;
+
+    color: #625e55;
+
+    margin-bottom: 38px;
+}
+
+.button {
+    display: inline-block;
+
+    background: var(--soft-black);
+    color: #fff;
+
+    padding: 17px 27px;
+
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.button:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+
+/* ---------- GENERAL SECTION ---------- */
+
+.categories,
+.featured {
+    padding: 120px 6vw;
+}
+
+.section-heading {
+    margin-bottom: 60px;
+}
+
+.section-heading h2 {
+    font-size: clamp(2.4rem, 4vw, 4.5rem);
+
+    line-height: 1;
+
+    letter-spacing: -0.03em;
+}
+
+
+/* ---------- CATEGORY GRID ---------- */
+
+.categories {
+    background: var(--cream);
+}
+
+.category-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 22px;
+}
+
+.category-card {
+    display: block;
+}
+
+.category-image {
+    aspect-ratio: 4 / 5;
+
+    margin-bottom: 22px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.category-card:hover .category-image {
+    transform: translateY(-5px);
+}
+
+.category-card h3 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 1.35rem;
+
+    margin-bottom: 5px;
+}
+
+.category-card p {
+    font-size: 0.66rem;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+
+    color: #787268;
+}
+
+
+/* ---------- PLACEHOLDER IMAGES ---------- */
+
+.placeholder {
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9d3c6 0%,
+            #ece7dc 50%,
+            #c9c0af 100%
+        );
+}
+
+.placeholder::after {
+    content: "IMAGE";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 0.6rem;
+
+    letter-spacing: 0.3em;
+
+    color: rgba(37, 36, 31, 0.4);
+}
+
+
+/* ---------- FEATURED PRODUCTS ---------- */
+
+.featured {
+    background: var(--warm-white);
+}
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+.product-card {
+    cursor: pointer;
+}
+
+.product-image {
+    aspect-ratio: 4 / 5;
+
+    margin-bottom: 22px;
+
+    overflow: hidden;
+
+    transition: transform 0.35s ease;
+}
+
+.product-card:hover .product-image {
+    transform: translateY(-5px);
+}
+
+.product-category {
+    font-size: 0.62rem;
+
+    letter-spacing: 0.18em;
+
+    color: #878176;
+
+    margin-bottom: 6px;
+}
+
+.product-card h3 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 1.25rem;
+
+    margin-bottom: 4px;
+}
+
+.product-price {
+    font-size: 0.82rem;
+
+    color: #706b61;
+}
+
+
+/* ---------- STORY ---------- */
+
+.story {
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 120px 8vw;
+
+    background: #272720;
+
+    color: #f6f3eb;
+}
+
+.story-content {
+    max-width: 720px;
+}
+
+.story .eyebrow {
+    color: #aaa496;
+}
+
+.story h2 {
+    font-size: clamp(2.7rem, 5vw, 5.5rem);
+
+    line-height: 1;
+
+    letter-spacing: -0.035em;
+
+    margin-bottom: 35px;
+}
+
+.story p:not(.eyebrow) {
+    max-width: 540px;
+
+    color: #cbc6bb;
+
+    margin-bottom: 28px;
+}
+
+.text-link {
+    display: inline-block;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+
+    border-bottom: 1px solid rgba(255,255,255,0.45);
+
+    padding-bottom: 5px;
+
+    transition: border-color 0.3s ease;
+}
+
+.text-link:hover {
+    border-color: #fff;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+footer {
+    padding: 75px 6vw 50px;
+
+    background: #171713;
+
+    color: #e5e0d7;
+}
+
+.footer-brand {
+    font-size: 0.78rem;
+
+    letter-spacing: 0.2em;
+
+    margin-bottom: 38px;
+}
+
+.footer-links {
+    display: flex;
+
+    gap: 30px;
+
+    margin-bottom: 65px;
+}
+
+.footer-links a {
+    font-size: 0.72rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.12em;
+
+    color: #aaa599;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.copyright {
+    padding-top: 24px;
+
+    border-top: 1px solid rgba(255,255,255,0.1);
+
+    font-size: 0.68rem;
+
+    letter-spacing: 0.08em;
+
+    color: #747168;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        row-gap: 55px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .site-header {
+        padding: 25px 6vw;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 22px;
+    }
+
+    .site-header nav {
+        width: 100%;
+
+        justify-content: space-between;
+
+        gap: 12px;
+    }
+
+    .site-header nav a {
+        font-size: 0.63rem;
+    }
+
+    .hero {
+        min-height: 72vh;
+
+        padding: 90px 7vw;
+    }
+
+    .hero h1 {
+        font-size: clamp(3rem, 15vw, 5rem);
+    }
+
+    .categories,
+    .featured {
+        padding: 85px 6vw;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 14px;
+
+        row-gap: 42px;
+    }
+
+    .category-card h3 {
+        font-size: 1.05rem;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+    }
+
+    .story {
+        min-height: 560px;
+
+        padding: 90px 7vw;
+    }
+
+    .story h2 {
+        font-size: clamp(2.7rem, 12vw, 4.5rem);
+    }
+
+    .footer-links {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+}
