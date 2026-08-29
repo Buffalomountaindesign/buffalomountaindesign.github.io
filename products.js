@@ -58,6 +58,27 @@ const categoryNames = {
     art: "Art + Other"
 };
 
+/* Hide category filters that currently have no products */
+
+filterButtons.forEach(button => {
+
+    const category = button.dataset.filter;
+
+    // Always keep the "All" button
+    if (category === "all") {
+        return;
+    }
+
+    const categoryHasProducts =
+        products.some(product =>
+            product.category === category
+        );
+
+    if (!categoryHasProducts) {
+        button.hidden = true;
+    }
+
+});
 
 let activeCategory = "all";
 
