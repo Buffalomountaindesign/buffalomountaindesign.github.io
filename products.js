@@ -1,59 +1,45 @@
 const products = [
 
     {
-        name: "Mountain Drop Earrings",
-        category: "earrings",
-        price: "$—",
-        image: ""
-    },
-
-    {
-        name: "Beaded Statement Earrings",
-        category: "earrings",
-        price: "$—",
-        image: ""
-    },
-
-    {
-        name: "Buffalo Mountain Bracelet",
-        category: "bracelets",
-        price: "$—",
-        image: ""
-    },
-
-    {
-        name: "Beaded Cuff",
-        category: "bracelets",
-        price: "$—",
-        image: ""
-    },
-
-    {
-        name: "Mountain Necklace",
+        name: "Beaded Necklace 01",
         category: "necklaces",
         price: "$—",
-        image: ""
+        image: "assets/images/necklace-1.png"
     },
 
     {
-        name: "Beaded Pendant",
+        name: "Beaded Necklace 02",
         category: "necklaces",
         price: "$—",
-        image: ""
+        image: "assets/images/necklace-2.png"
     },
 
     {
-        name: "Small Beaded Work",
-        category: "art",
+        name: "Beaded Necklace 03",
+        category: "necklaces",
         price: "$—",
-        image: ""
+        image: "assets/images/necklace-3.png"
     },
 
     {
-        name: "Material Study",
-        category: "art",
+        name: "Beaded Necklace 04",
+        category: "necklaces",
         price: "$—",
-        image: ""
+        image: "assets/images/necklace-4.png"
+    },
+
+    {
+        name: "Beaded Necklace 05",
+        category: "necklaces",
+        price: "$—",
+        image: "assets/images/necklace-5.png"
+    },
+
+    {
+        name: "Beaded Necklace 06",
+        category: "necklaces",
+        price: "$—",
+        image: "assets/images/necklace-6.png"
     }
 
 ];
