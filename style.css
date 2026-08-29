@@ -72,17 +72,12 @@ h2 {
 .site-header {
     width: 100%;
     min-height: 92px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 6vw;
-
     border-bottom: 1px solid rgba(37, 36, 31, 0.12);
-
     background: rgba(245, 242, 235, 0.96);
-
     position: relative;
     z-index: 10;
 }
@@ -102,23 +97,17 @@ h2 {
     font-size: 0.76rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-
     position: relative;
 }
 
 .site-header nav a::after {
     content: "";
-
     position: absolute;
-
     left: 0;
     bottom: -8px;
-
     width: 0;
     height: 1px;
-
     background: var(--charcoal);
-
     transition: width 0.3s ease;
 }
 
@@ -131,14 +120,10 @@ h2 {
 
 .hero {
     min-height: 78vh;
-
     display: flex;
     align-items: center;
-
     padding: 9vw 8vw;
-
     position: relative;
-
     background:
         linear-gradient(
             90deg,
@@ -154,38 +139,27 @@ h2 {
 
 .hero h1 {
     font-size: clamp(3.4rem, 7vw, 7.4rem);
-
     line-height: 0.94;
-
     letter-spacing: -0.045em;
-
     margin-bottom: 40px;
 }
 
 .hero-description {
     max-width: 530px;
-
     font-size: 1rem;
-
     line-height: 1.85;
-
     color: #625e55;
-
     margin-bottom: 38px;
 }
 
 .button {
     display: inline-block;
-
     background: var(--soft-black);
     color: #fff;
-
     padding: 17px 27px;
-
     font-size: 0.72rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-
     transition:
         background 0.3s ease,
         transform 0.3s ease;
@@ -210,9 +184,7 @@ h2 {
 
 .section-heading h2 {
     font-size: clamp(2.4rem, 4vw, 4.5rem);
-
     line-height: 1;
-
     letter-spacing: -0.03em;
 }
 
@@ -225,9 +197,7 @@ h2 {
 
 .category-grid {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 22px;
 }
 
@@ -237,35 +207,40 @@ h2 {
 
 .category-image {
     aspect-ratio: 4 / 5;
-
     margin-bottom: 22px;
-
     overflow: hidden;
-
+    background: #ebe7dd;
     transition:
         transform 0.4s ease,
         opacity 0.4s ease;
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
 }
 
 .category-card:hover .category-image {
     transform: translateY(-5px);
 }
 
+.category-card:hover .category-image img {
+    transform: scale(1.025);
+}
+
 .category-card h3 {
     font-family: Georgia, "Times New Roman", serif;
-
     font-size: 1.35rem;
-
     margin-bottom: 5px;
 }
 
 .category-card p {
     font-size: 0.66rem;
-
     letter-spacing: 0.14em;
-
     text-transform: uppercase;
-
     color: #787268;
 }
 
@@ -274,7 +249,6 @@ h2 {
 
 .placeholder {
     position: relative;
-
     background:
         linear-gradient(
             135deg,
@@ -286,18 +260,12 @@ h2 {
 
 .placeholder::after {
     content: "IMAGE";
-
     position: absolute;
-
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
-
     font-size: 0.6rem;
-
     letter-spacing: 0.3em;
-
     color: rgba(37, 36, 31, 0.4);
 }
 
@@ -310,9 +278,7 @@ h2 {
 
 .product-grid {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 30px;
 }
 
@@ -322,39 +288,43 @@ h2 {
 
 .product-image {
     aspect-ratio: 4 / 5;
-
     margin-bottom: 22px;
-
     overflow: hidden;
-
+    background: #ebe7dd;
     transition: transform 0.35s ease;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
 }
 
 .product-card:hover .product-image {
     transform: translateY(-5px);
 }
 
+.product-card:hover .product-image img {
+    transform: scale(1.025);
+}
+
 .product-category {
     font-size: 0.62rem;
-
     letter-spacing: 0.18em;
-
     color: #878176;
-
     margin-bottom: 6px;
 }
 
 .product-card h3 {
     font-family: Georgia, "Times New Roman", serif;
-
     font-size: 1.25rem;
-
     margin-bottom: 4px;
 }
 
 .product-price {
     font-size: 0.82rem;
-
     color: #706b61;
 }
 
@@ -363,14 +333,10 @@ h2 {
 
 .story {
     min-height: 620px;
-
     display: flex;
     align-items: center;
-
     padding: 120px 8vw;
-
     background: #272720;
-
     color: #f6f3eb;
 }
 
@@ -384,35 +350,24 @@ h2 {
 
 .story h2 {
     font-size: clamp(2.7rem, 5vw, 5.5rem);
-
     line-height: 1;
-
     letter-spacing: -0.035em;
-
     margin-bottom: 35px;
 }
 
 .story p:not(.eyebrow) {
     max-width: 540px;
-
     color: #cbc6bb;
-
     margin-bottom: 28px;
 }
 
 .text-link {
     display: inline-block;
-
     font-size: 0.72rem;
-
     letter-spacing: 0.14em;
-
     text-transform: uppercase;
-
     border-bottom: 1px solid rgba(255,255,255,0.45);
-
     padding-bottom: 5px;
-
     transition: border-color 0.3s ease;
 }
 
@@ -425,35 +380,26 @@ h2 {
 
 footer {
     padding: 75px 6vw 50px;
-
     background: #171713;
-
     color: #e5e0d7;
 }
 
 .footer-brand {
     font-size: 0.78rem;
-
     letter-spacing: 0.2em;
-
     margin-bottom: 38px;
 }
 
 .footer-links {
     display: flex;
-
     gap: 30px;
-
     margin-bottom: 65px;
 }
 
 .footer-links a {
     font-size: 0.72rem;
-
     text-transform: uppercase;
-
     letter-spacing: 0.12em;
-
     color: #aaa599;
 }
 
@@ -463,110 +409,12 @@ footer {
 
 .copyright {
     padding-top: 24px;
-
     border-top: 1px solid rgba(255,255,255,0.1);
-
     font-size: 0.68rem;
-
     letter-spacing: 0.08em;
-
     color: #747168;
 }
 
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 1000px) {
-
-    .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-
-        row-gap: 55px;
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-    .site-header {
-        padding: 25px 6vw;
-
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        gap: 22px;
-    }
-
-    .site-header nav {
-        width: 100%;
-
-        justify-content: space-between;
-
-        gap: 12px;
-    }
-
-    .site-header nav a {
-        font-size: 0.63rem;
-    }
-
-    .hero {
-        min-height: 72vh;
-
-        padding: 90px 7vw;
-    }
-
-    .hero h1 {
-        font-size: clamp(3rem, 15vw, 5rem);
-    }
-
-    .categories,
-    .featured {
-        padding: 85px 6vw;
-    }
-
-    .category-grid {
-        grid-template-columns: 1fr 1fr;
-
-        gap: 14px;
-
-        row-gap: 42px;
-    }
-
-    .category-card h3 {
-        font-size: 1.05rem;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-
-        gap: 55px;
-    }
-
-    .story {
-        min-height: 560px;
-
-        padding: 90px 7vw;
-    }
-
-    .story h2 {
-        font-size: clamp(2.7rem, 12vw, 4.5rem);
-    }
-
-    .footer-links {
-        flex-direction: column;
-
-        gap: 15px;
-    }
-
-}
 
 /* =========================================================
    SHOP
@@ -583,21 +431,15 @@ footer {
 
 .shop-intro h1 {
     font-family: Georgia, "Times New Roman", serif;
-
     font-size: clamp(4rem, 8vw, 8rem);
-
     line-height: 0.9;
-
     letter-spacing: -0.045em;
-
     margin-bottom: 35px;
 }
 
 .shop-intro > p:last-child {
     max-width: 530px;
-
     color: #686359;
-
     line-height: 1.8;
 }
 
@@ -606,42 +448,28 @@ footer {
 
 .shop-controls {
     padding: 30px 6vw;
-
     display: flex;
-
     justify-content: space-between;
     align-items: center;
-
     gap: 35px;
-
     border-bottom: 1px solid var(--line);
 }
 
 .filter-buttons {
     display: flex;
-
     gap: 25px;
-
     flex-wrap: wrap;
 }
 
 .filter-button {
     border: none;
-
     background: transparent;
-
     padding: 8px 0;
-
     cursor: pointer;
-
     color: #8a8479;
-
     font-size: 0.7rem;
-
     letter-spacing: 0.13em;
-
     text-transform: uppercase;
-
     border-bottom: 1px solid transparent;
 }
 
@@ -651,7 +479,6 @@ footer {
 
 .filter-button.active {
     color: var(--charcoal);
-
     border-bottom-color: var(--charcoal);
 }
 
@@ -660,37 +487,25 @@ footer {
 
 .shop-search {
     display: flex;
-
     align-items: center;
-
     gap: 15px;
 }
 
 .shop-search label {
     font-size: 0.65rem;
-
     letter-spacing: 0.13em;
-
     text-transform: uppercase;
-
     color: #777167;
 }
 
 .shop-search input {
     width: 220px;
-
     padding: 11px 0;
-
     border: none;
-
     border-bottom: 1px solid #aaa397;
-
     outline: none;
-
     background: transparent;
-
     font-family: inherit;
-
     font-size: 0.85rem;
 }
 
@@ -707,10 +522,8 @@ footer {
 
 .shop-product-grid {
     display: grid;
-
     grid-template-columns:
         repeat(4, minmax(0, 1fr));
-
     gap: 55px 24px;
 }
 
@@ -720,53 +533,71 @@ footer {
 
 .shop-product-image {
     width: 100%;
-
     aspect-ratio: 4 / 5;
-
     margin-bottom: 20px;
-
     overflow: hidden;
-
     background: #ebe7dd;
 }
 
 .shop-product-image img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     transition: transform 0.5s ease;
 }
 
 .shop-product-card:hover
 .shop-product-image img {
-
     transform: scale(1.025);
 }
 
 .shop-product-card h2 {
     font-family: Georgia, "Times New Roman", serif;
-
     font-size: 1.2rem;
-
     line-height: 1.3;
-
     margin: 4px 0;
 }
 
 .shop-empty {
     padding: 100px 0;
-
     text-align: center;
-
     color: #777167;
 }
 
 
-/* ---------- SHOP TABLET ---------- */
+/* ---------- DYNAMIC CATEGORY WIDTHS ---------- */
+
+.category-grid[data-count="1"] {
+    grid-template-columns:
+        minmax(260px, 420px);
+}
+
+.category-grid[data-count="2"] {
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    max-width: 850px;
+}
+
+.category-grid[data-count="3"] {
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media (max-width: 1000px) {
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 55px;
+    }
+
+    .category-grid[data-count="1"] {
+        grid-template-columns: minmax(260px, 420px);
+    }
 
     .shop-product-grid {
         grid-template-columns:
@@ -775,16 +606,87 @@ footer {
 
     .shop-controls {
         align-items: flex-start;
-
         flex-direction: column;
     }
 
 }
 
 
-/* ---------- SHOP MOBILE ---------- */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 700px) {
+
+    .site-header {
+        padding: 25px 6vw;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .site-header nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .site-header nav a {
+        font-size: 0.63rem;
+    }
+
+    .hero {
+        min-height: 72vh;
+        padding: 90px 7vw;
+    }
+
+    .hero h1 {
+        font-size: clamp(3rem, 15vw, 5rem);
+    }
+
+    .categories,
+    .featured {
+        padding: 85px 6vw;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        row-gap: 42px;
+    }
+
+    .category-grid[data-count="1"] {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
+
+    .category-grid[data-count="2"],
+    .category-grid[data-count="3"] {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .category-card h3 {
+        font-size: 1.05rem;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
+    }
+
+    .story {
+        min-height: 560px;
+        padding: 90px 7vw;
+    }
+
+    .story h2 {
+        font-size: clamp(2.7rem, 12vw, 4.5rem);
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+    }
 
     .shop-intro {
         padding: 75px 6vw 55px;
