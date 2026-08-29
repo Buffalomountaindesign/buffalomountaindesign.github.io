@@ -1,6 +1,7 @@
 const products = [
 
     {
+        id: "beaded-necklace-01",
         name: "Beaded Necklace 01",
         category: "necklaces",
         price: "$—",
@@ -9,6 +10,7 @@ const products = [
     },
 
     {
+        id: "beaded-necklace-02",
         name: "Beaded Necklace 02",
         category: "necklaces",
         price: "$—",
@@ -17,6 +19,7 @@ const products = [
     },
 
     {
+        id: "beaded-necklace-03",
         name: "Beaded Necklace 03",
         category: "necklaces",
         price: "$—",
@@ -25,6 +28,7 @@ const products = [
     },
 
     {
+        id: "beaded-necklace-04",
         name: "Beaded Necklace 04",
         category: "necklaces",
         price: "$—",
@@ -33,6 +37,7 @@ const products = [
     },
 
     {
+        id: "beaded-necklace-05",
         name: "Beaded Necklace 05",
         category: "necklaces",
         price: "$—",
@@ -41,6 +46,7 @@ const products = [
     },
 
     {
+        id: "beaded-necklace-06",
         name: "Beaded Necklace 06",
         category: "necklaces",
         price: "$—",
@@ -55,8 +61,14 @@ const categoryNames = {
     earrings: "Earrings",
     necklaces: "Necklaces",
     bracelets: "Bracelets",
+    leather: "Leather",
     art: "Art + Other"
 };
+
+
+function productUrl(product) {
+    return `product.html?piece=${encodeURIComponent(product.id)}`;
+}
 
 
 /* =========================================================
@@ -73,8 +85,6 @@ if (grid && searchInput && emptyMessage) {
 
     let activeCategory = "all";
 
-
-    /* Hide filters that currently have no products */
 
     filterButtons.forEach(button => {
 
@@ -146,24 +156,35 @@ if (grid && searchInput && emptyMessage) {
 
             card.innerHTML = `
 
-                <div class="shop-product-image">
-                    <img
-                        src="${product.image}"
-                        alt="${product.name}"
-                        loading="lazy">
-                </div>
+                <a
+                    class="product-card-link"
+                    href="${productUrl(product)}"
+                    aria-label="View ${product.name}">
 
-                <p class="product-category">
-                    ${categoryNames[product.category]}
-                </p>
+                    <div class="shop-product-image">
+                        <img
+                            src="${product.image}"
+                            alt="${product.name}"
+                            loading="lazy">
+                    </div>
 
-                <h2>
-                    ${product.name}
-                </h2>
+                    <p class="product-category">
+                        ${categoryNames[product.category]}
+                    </p>
 
-                <p class="product-price">
-                    ${product.price}
-                </p>
+                    <h2>
+                        ${product.name}
+                    </h2>
+
+                    <p class="product-price">
+                        ${product.price}
+                    </p>
+
+                    <p class="view-piece">
+                        View Piece →
+                    </p>
+
+                </a>
 
             `;
 
@@ -216,8 +237,6 @@ if (grid && searchInput && emptyMessage) {
         renderProducts
     );
 
-
-    /* Read category links from homepage */
 
     const urlParams =
         new URLSearchParams(window.location.search);
@@ -327,11 +346,6 @@ if (featuredGrid) {
         );
 
 
-    /*
-       If no products are manually marked as featured,
-       automatically use the first three.
-    */
-
     if (featuredProducts.length === 0) {
 
         featuredProducts =
@@ -354,26 +368,37 @@ if (featuredGrid) {
 
             card.innerHTML = `
 
-                <div class="product-image">
+                <a
+                    class="product-card-link"
+                    href="${productUrl(product)}"
+                    aria-label="View ${product.name}">
 
-                    <img
-                        src="${product.image}"
-                        alt="${product.name}"
-                        loading="lazy">
+                    <div class="product-image">
 
-                </div>
+                        <img
+                            src="${product.image}"
+                            alt="${product.name}"
+                            loading="lazy">
 
-                <p class="product-category">
-                    ${categoryNames[product.category]}
-                </p>
+                    </div>
 
-                <h3>
-                    ${product.name}
-                </h3>
+                    <p class="product-category">
+                        ${categoryNames[product.category]}
+                    </p>
 
-                <p class="product-price">
-                    ${product.price}
-                </p>
+                    <h3>
+                        ${product.name}
+                    </h3>
+
+                    <p class="product-price">
+                        ${product.price}
+                    </p>
+
+                    <p class="view-piece">
+                        View Piece →
+                    </p>
+
+                </a>
 
             `;
 
@@ -381,5 +406,177 @@ if (featuredGrid) {
             featuredGrid.appendChild(card);
 
         });
+
+}
+
+
+/* =========================================================
+   PRODUCT DETAIL PAGE
+   ========================================================= */
+
+const productDetail =
+    document.getElementById("product-detail");
+
+
+if (productDetail) {
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    const requestedPiece =
+        params.get("piece");
+
+
+    const productIndex =
+        products.findIndex(
+            product =>
+                product.id === requestedPiece
+        );
+
+
+    if (productIndex === -1) {
+
+        document.title =
+            "Piece Not Found | Buffalo Mountain Design";
+
+
+        productDetail.innerHTML = `
+
+            <section class="product-not-found">
+
+                <p class="eyebrow">
+                    COLLECTION
+                </p>
+
+                <h1>
+                    Piece not found.
+                </h1>
+
+                <p>
+                    This piece may have moved or the link may no longer be available.
+                </p>
+
+                <a
+                    class="button"
+                    href="shop.html">
+                    Return to Shop
+                </a>
+
+            </section>
+
+        `;
+
+    } else {
+
+        const product =
+            products[productIndex];
+
+
+        const previousProduct =
+            products[
+                (productIndex - 1 + products.length)
+                % products.length
+            ];
+
+
+        const nextProduct =
+            products[
+                (productIndex + 1)
+                % products.length
+            ];
+
+
+        document.title =
+            `${product.name} | Buffalo Mountain Design`;
+
+
+        productDetail.innerHTML = `
+
+            <section class="product-detail-layout">
+
+                <div class="product-detail-image">
+
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}">
+
+                </div>
+
+
+                <div class="product-detail-info">
+
+                    <a
+                        href="shop.html?category=${product.category}"
+                        class="back-link">
+                        ← Back to ${categoryNames[product.category]}
+                    </a>
+
+                    <p class="eyebrow">
+                        ${categoryNames[product.category]}
+                    </p>
+
+                    <h1>
+                        ${product.name}
+                    </h1>
+
+                    <p class="product-detail-price">
+                        ${product.price}
+                    </p>
+
+                    <div class="product-detail-divider"></div>
+
+                    <p class="product-detail-copy">
+                        Handcrafted beadwork from Buffalo Mountain Design in
+                        Alberta, Canada. This piece belongs to an Indigenous-led
+                        collection centred on careful making, strong colour,
+                        texture and contemporary wearable form.
+                    </p>
+
+                    <div class="product-status">
+                        <span class="status-dot"></span>
+                        Materials, sizing and availability coming soon
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <nav
+                class="product-pagination"
+                aria-label="Browse pieces">
+
+                <a href="${productUrl(previousProduct)}">
+
+                    <span>
+                        Previous Piece
+                    </span>
+
+                    <strong>
+                        ← ${previousProduct.name}
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="${productUrl(nextProduct)}"
+                    class="product-next">
+
+                    <span>
+                        Next Piece
+                    </span>
+
+                    <strong>
+                        ${nextProduct.name} →
+                    </strong>
+
+                </a>
+
+            </nav>
+
+        `;
+
+    }
 
 }
