@@ -1,12 +1,16 @@
 const products = [
 
     {
-        id: "beaded-necklace-01",
-        name: "Beaded Necklace 01",
+        id: "desert-oasis",
+        name: "Desert Oasis",
         category: "necklaces",
-        price: "$—",
+        price: "$200 CAD",
         image: "assets/images/necklace-1.png",
-        featured: true
+        featured: true,
+        materials: "Various types of 6 mm Czech seed beads",
+        dimensions: "28 in circumference · 71 cm",
+        availability: "Available",
+        description: "Inspired by desert rattlesnakes."
     },
 
     {
@@ -525,16 +529,65 @@ if (productDetail) {
 
                     <div class="product-detail-divider"></div>
 
-                    <p class="product-detail-copy">
-                        Handcrafted beadwork from Buffalo Mountain Design in
-                        Alberta, Canada. This piece belongs to an Indigenous-led
-                        collection centred on careful making, strong colour,
-                        texture and contemporary wearable form.
-                    </p>
+                    ${
+                        product.description
+                            ? `
+                                <p class="product-detail-copy">
+                                    ${product.description}
+                                </p>
+                            `
+                            : `
+                                <p class="product-detail-copy">
+                                    Handcrafted beadwork from Buffalo Mountain
+                                    Design in Alberta, Canada.
+                                </p>
+                            `
+                    }
+
+                    ${
+                        product.materials ||
+                        product.dimensions
+                            ? `
+                                <dl class="product-meta">
+
+                                    ${
+                                        product.materials
+                                            ? `
+                                                <div class="product-meta-row">
+                                                    <dt>Materials</dt>
+                                                    <dd>${product.materials}</dd>
+                                                </div>
+                                            `
+                                            : ""
+                                    }
+
+                                    ${
+                                        product.dimensions
+                                            ? `
+                                                <div class="product-meta-row">
+                                                    <dt>Size</dt>
+                                                    <dd>${product.dimensions}</dd>
+                                                </div>
+                                            `
+                                            : ""
+                                    }
+
+                                </dl>
+                            `
+                            : ""
+                    }
 
                     <div class="product-status">
-                        <span class="status-dot"></span>
-                        Materials, sizing and availability coming soon
+                        <span class="status-dot ${
+                            product.availability === "Available"
+                                ? "is-available"
+                                : ""
+                        }"></span>
+
+                        ${
+                            product.availability ||
+                            "Materials, sizing and availability coming soon"
+                        }
                     </div>
 
                 </div>
