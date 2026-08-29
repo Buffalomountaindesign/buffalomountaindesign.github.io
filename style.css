@@ -283,7 +283,7 @@ h2 {
 .hero-carousel-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 18px;
 }
 
 .hero-counter {
@@ -300,25 +300,6 @@ h2 {
     width: 18px;
     height: 1px;
     background: #aaa397;
-}
-
-.hero-control {
-    width: 44px;
-    height: 44px;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--line);
-    background: transparent;
-    color: var(--charcoal);
-    cursor: pointer;
-    transition:
-        background 0.25s ease,
-        border-color 0.25s ease;
-}
-
-.hero-control:hover {
-    background: #efebe2;
-    border-color: #c8c0b2;
 }
 
 .hero-pause {
@@ -340,7 +321,6 @@ h2 {
 }
 
 .hero-dot:focus-visible,
-.hero-control:focus-visible,
 .hero-pause:focus-visible,
 .button:focus-visible,
 a:focus-visible {
@@ -454,17 +434,13 @@ a:focus-visible {
 .product-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     display: block;
-    transition: transform 0.5s ease;
 }
 
 .product-card:hover .product-image {
     transform: translateY(-5px);
-}
-
-.product-card:hover .product-image img {
-    transform: scale(1.025);
 }
 
 .product-category {
@@ -720,16 +696,12 @@ footer {
 .shop-product-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+    object-fit: contain;
+    object-position: center;
 }
 
 .shop-product-card:hover .shop-product-image {
     transform: translateY(-5px);
-}
-
-.shop-product-card:hover .shop-product-image img {
-    transform: scale(1.025);
 }
 
 .shop-product-card h2 {
@@ -791,15 +763,19 @@ footer {
 }
 
 .product-detail-image {
-    background: #ebe7dd;
     min-height: 720px;
+    display: grid;
+    place-items: center;
+    padding: clamp(24px, 4vw, 64px);
+    background: #ebe7dd;
 }
 
 .product-detail-image img {
     width: 100%;
     height: 100%;
-    min-height: 720px;
-    object-fit: cover;
+    max-height: 820px;
+    object-fit: contain;
+    object-position: center;
 }
 
 .product-detail-info {
@@ -991,11 +967,11 @@ footer {
 
     .product-detail-image {
         min-height: 0;
+        padding: clamp(20px, 5vw, 48px);
     }
 
     .product-detail-image img {
-        min-height: 0;
-        max-height: 78vh;
+        max-height: 760px;
         object-fit: contain;
     }
 
@@ -1065,12 +1041,12 @@ footer {
 
     .hero-carousel-actions {
         width: 100%;
-        justify-content: space-between;
-        gap: 8px;
+        justify-content: flex-start;
+        gap: 18px;
     }
 
     .hero-counter {
-        margin-right: auto;
+        margin-right: 0;
     }
 
     .hero-dots {
