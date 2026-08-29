@@ -7,6 +7,7 @@
     <title>Buffalo Mountain Design</title>
 
     <link rel="stylesheet" href="style.css">
+    <script src="hero.js" defer></script>
     <script src="products.js" defer></script>
 </head>
 
@@ -30,30 +31,175 @@
 
 <main>
 
-    <!-- HERO -->
+    <!-- HERO CAROUSEL -->
 
-    <section class="hero">
+    <section
+        class="hero-carousel"
+        data-hero-carousel
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Buffalo Mountain Design featured imagery">
 
-        <div class="hero-content">
+        <div class="hero-carousel-copy">
 
-            <p class="eyebrow">
-                HANDCRAFTED JEWELRY · ALBERTA
-            </p>
+            <div class="hero-copy-inner">
 
-            <h1>
-                Made by hand.<br>
-                Inspired by place.
-            </h1>
+                <p class="eyebrow">
+                    HANDCRAFTED JEWELRY · ALBERTA
+                </p>
 
-            <p class="hero-description">
-                Contemporary jewelry and handmade works created with
-                thoughtful materials, traditional craft, and a connection
-                to the landscape.
-            </p>
+                <h1>
+                    Made by hand.<br>
+                    Inspired by place.
+                </h1>
 
-            <a href="shop.html" class="button">
-                Explore the Collection
-            </a>
+                <p class="hero-description">
+                    Contemporary jewelry and handmade works created with
+                    thoughtful materials, traditional craft, and a connection
+                    to the landscape.
+                </p>
+
+                <a href="shop.html" class="button">
+                    Explore the Collection
+                </a>
+
+            </div>
+
+
+            <div class="hero-carousel-controls">
+
+                <div
+                    class="hero-dots"
+                    role="tablist"
+                    aria-label="Choose hero image">
+
+                    <button
+                        class="hero-dot is-active"
+                        type="button"
+                        data-hero-dot="0"
+                        aria-label="Show image 1"
+                        aria-current="true">
+                    </button>
+
+                    <button
+                        class="hero-dot"
+                        type="button"
+                        data-hero-dot="1"
+                        aria-label="Show image 2">
+                    </button>
+
+                    <button
+                        class="hero-dot"
+                        type="button"
+                        data-hero-dot="2"
+                        aria-label="Show image 3">
+                    </button>
+
+                    <button
+                        class="hero-dot"
+                        type="button"
+                        data-hero-dot="3"
+                        aria-label="Show image 4">
+                    </button>
+
+                </div>
+
+
+                <div class="hero-carousel-actions">
+
+                    <span
+                        class="hero-counter"
+                        aria-live="polite">
+
+                        <span data-hero-current>01</span>
+                        <span class="hero-counter-line"></span>
+                        <span>04</span>
+
+                    </span>
+
+                    <button
+                        class="hero-control"
+                        type="button"
+                        data-hero-prev
+                        aria-label="Previous hero image">
+                        ←
+                    </button>
+
+                    <button
+                        class="hero-control"
+                        type="button"
+                        data-hero-next
+                        aria-label="Next hero image">
+                        →
+                    </button>
+
+                    <button
+                        class="hero-pause"
+                        type="button"
+                        data-hero-pause
+                        aria-label="Pause carousel">
+                        Pause
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-carousel-visual">
+
+            <figure
+                class="hero-slide hero-slide--lake is-active"
+                data-hero-slide
+                aria-hidden="false">
+
+                <img
+                    src="assets/images/hero-1.webp"
+                    alt="Blue, white and gray beaded necklace displayed beside a mountain lake"
+                    fetchpriority="high">
+
+            </figure>
+
+
+            <figure
+                class="hero-slide hero-slide--meadow-soft"
+                data-hero-slide
+                aria-hidden="true">
+
+                <img
+                    src="assets/images/hero-2.webp"
+                    alt="Light blue beaded necklace suspended among softly lit wildflowers"
+                    loading="lazy">
+
+            </figure>
+
+
+            <figure
+                class="hero-slide hero-slide--meadow-vivid"
+                data-hero-slide
+                aria-hidden="true">
+
+                <img
+                    src="assets/images/hero-3.webp"
+                    alt="Blue beaded necklace suspended in a vivid sunlit meadow"
+                    loading="lazy">
+
+            </figure>
+
+
+            <figure
+                class="hero-slide hero-slide--serpent"
+                data-hero-slide
+                aria-hidden="true">
+
+                <img
+                    src="assets/images/hero-4.webp"
+                    alt="Turquoise beaded serpent artwork arranged on warm sandstone"
+                    loading="lazy">
+
+            </figure>
 
         </div>
 
@@ -146,7 +292,6 @@
     </p>
 
 </footer>
-
 
 </body>
 </html>
