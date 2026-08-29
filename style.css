@@ -834,6 +834,34 @@ footer {
     line-height: 1.9;
 }
 
+.product-meta {
+    width: 100%;
+    max-width: 560px;
+    margin-top: 38px;
+    border-top: 1px solid var(--line);
+}
+
+.product-meta-row {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.product-meta dt {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #878176;
+}
+
+.product-meta dd {
+    margin: 0;
+    color: #504c45;
+    line-height: 1.6;
+}
+
 .product-status {
     display: flex;
     align-items: center;
@@ -850,6 +878,10 @@ footer {
     height: 7px;
     border-radius: 50%;
     background: #9b958a;
+}
+
+.status-dot.is-available {
+    background: #62705a;
 }
 
 .product-pagination {
@@ -1205,6 +1237,12 @@ footer {
    ========================================================= */
 
 @media (max-width: 700px) {
+
+    .product-meta-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
 
     .about-hero,
     .contact-hero {
