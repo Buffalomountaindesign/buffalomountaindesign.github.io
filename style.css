@@ -364,10 +364,10 @@ a:focus-visible {
 }
 
 .category-image {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
     margin-bottom: 22px;
     overflow: hidden;
-    background: #ebe7dd;
+    background: #f4f0e8;
     transition:
         transform 0.4s ease,
         opacity 0.4s ease;
@@ -376,17 +376,13 @@ a:focus-visible {
 .category-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     display: block;
-    transition: transform 0.5s ease;
 }
 
 .category-card:hover .category-image {
     transform: translateY(-5px);
-}
-
-.category-card:hover .category-image img {
-    transform: scale(1.025);
 }
 
 .category-card h3 {
@@ -424,10 +420,10 @@ a:focus-visible {
 }
 
 .product-image {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
     margin-bottom: 22px;
     overflow: hidden;
-    background: #ebe7dd;
+    background: #f4f0e8;
     transition: transform 0.35s ease;
 }
 
@@ -686,10 +682,10 @@ footer {
 
 .shop-product-image {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
     margin-bottom: 20px;
     overflow: hidden;
-    background: #ebe7dd;
+    background: #f4f0e8;
     transition: transform 0.35s ease;
 }
 
