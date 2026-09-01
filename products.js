@@ -6,6 +6,10 @@ const products = [
         category: "necklaces",
         price: "$200 CAD",
         image: "assets/images/necklace-1.png",
+        thumbnailAI: true,
+        realImages: [
+            "assets/images/desert-oasis-real-1.jpg"
+        ],
         featured: true,
         materials: "Various types of 6 mm Czech seed beads",
         dimensions: "28 in circumference · 71 cm",
@@ -19,6 +23,7 @@ const products = [
         category: "necklaces",
         price: "$—",
         image: "assets/images/necklace-2.png",
+        thumbnailAI: true,
         featured: true
     },
 
@@ -28,6 +33,7 @@ const products = [
         category: "necklaces",
         price: "$—",
         image: "assets/images/necklace-3.png",
+        thumbnailAI: true,
         featured: true
     },
 
@@ -37,6 +43,7 @@ const products = [
         category: "necklaces",
         price: "$—",
         image: "assets/images/necklace-4.png",
+        thumbnailAI: true,
         featured: false
     },
 
@@ -46,6 +53,7 @@ const products = [
         category: "necklaces",
         price: "$—",
         image: "assets/images/necklace-5.png",
+        thumbnailAI: true,
         featured: false
     },
 
@@ -55,6 +63,7 @@ const products = [
         category: "necklaces",
         price: "$—",
         image: "assets/images/necklace-6.png",
+        thumbnailAI: true,
         featured: false
     }
 
@@ -171,6 +180,16 @@ if (grid && searchInput && emptyMessage) {
                             alt="${product.name}"
                             loading="lazy">
                     </div>
+
+                    ${
+                        product.thumbnailAI
+                            ? `
+                                <p class="thumbnail-note">
+                                    AI-assisted thumbnail
+                                </p>
+                            `
+                            : ""
+                    }
 
                     <p class="product-category">
                         ${categoryNames[product.category]}
@@ -316,6 +335,16 @@ if (homeCategoryGrid) {
 
             </div>
 
+            ${
+                categoryProduct.thumbnailAI
+                    ? `
+                        <p class="thumbnail-note">
+                            AI-assisted thumbnail
+                        </p>
+                    `
+                    : ""
+            }
+
             <h3>
                 ${categoryNames[category]}
             </h3>
@@ -385,6 +414,16 @@ if (featuredGrid) {
                             loading="lazy">
 
                     </div>
+
+                    ${
+                        product.thumbnailAI
+                            ? `
+                                <p class="thumbnail-note">
+                                    AI-assisted thumbnail
+                                </p>
+                            `
+                            : ""
+                    }
 
                     <p class="product-category">
                         ${categoryNames[product.category]}
@@ -498,11 +537,70 @@ if (productDetail) {
 
             <section class="product-detail-layout">
 
-                <div class="product-detail-image">
+                <div class="product-detail-media">
 
-                    <img
-                        src="${product.image}"
-                        alt="${product.name}">
+                    <div class="product-detail-image">
+
+                        <img
+                            id="product-main-image"
+                            src="${
+                                product.realImages &&
+                                product.realImages.length
+                                    ? product.realImages[0]
+                                    : product.image
+                            }"
+                            data-fallback="${product.image}"
+                            alt="${product.name}">
+
+                    </div>
+
+                    <p
+                        id="product-photo-caption"
+                        class="product-photo-caption">
+
+                        ${
+                            product.realImages &&
+                            product.realImages.length
+                                ? "Original product photograph"
+                                : "AI-assisted thumbnail shown temporarily — original product photography coming soon."
+                        }
+
+                    </p>
+
+                    ${
+                        product.realImages &&
+                        product.realImages.length > 1
+                            ? `
+                                <div
+                                    class="product-photo-thumbnails"
+                                    aria-label="Additional product photographs">
+
+                                    ${product.realImages
+                                        .map(
+                                            (image, imageIndex) => `
+                                                <button
+                                                    type="button"
+                                                    class="product-photo-thumb ${
+                                                        imageIndex === 0
+                                                            ? "is-active"
+                                                            : ""
+                                                    }"
+                                                    data-product-photo="${image}"
+                                                    aria-label="View product photograph ${imageIndex + 1}">
+
+                                                    <img
+                                                        src="${image}"
+                                                        alt="">
+
+                                                </button>
+                                            `
+                                        )
+                                        .join("")}
+
+                                </div>
+                            `
+                            : ""
+                    }
 
                 </div>
 
@@ -542,6 +640,19 @@ if (productDetail) {
                                     Design in Alberta, Canada.
                                 </p>
                             `
+                    }
+
+                    ${
+                        product.thumbnailAI
+                            ? `
+                                <p class="product-image-transparency">
+                                    The styled thumbnail used elsewhere on this
+                                    site is AI-assisted. Original product
+                                    photography is shown on this page when
+                                    available.
+                                </p>
+                            `
+                            : ""
                     }
 
                     ${
@@ -629,6 +740,119 @@ if (productDetail) {
             </nav>
 
         `;
+
+
+        const mainProductImage =
+            document.getElementById("product-main-image");
+
+        const photoCaption =
+            document.getElementById("product-photo-caption");
+
+        const photoButtons =
+            Array.from(
+                document.querySelectorAll(
+                    "[data-product-photo]"
+                )
+            );
+
+
+        if (mainProductImage) {
+
+            mainProductImage.addEventListener(
+                "error",
+                () => {
+
+                    const fallback =
+                        mainProductImage.dataset.fallback;
+
+                    if (
+                        fallback &&
+                        !mainProductImage.dataset.usedFallback
+                    ) {
+
+                        mainProductImage.dataset.usedFallback =
+                            "true";
+
+                        mainProductImage.src =
+                            fallback;
+
+                        if (photoCaption) {
+
+                            photoCaption.textContent =
+                                "AI-assisted thumbnail shown temporarily — original product photography coming soon.";
+
+                        }
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        photoButtons.forEach(button => {
+
+            const thumbImage =
+                button.querySelector("img");
+
+            thumbImage?.addEventListener(
+                "error",
+                () => {
+
+                    button.hidden = true;
+
+                }
+            );
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const image =
+                        button.dataset.productPhoto;
+
+                    if (
+                        !image ||
+                        !mainProductImage
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    mainProductImage.dataset.usedFallback =
+                        "";
+
+                    mainProductImage.src =
+                        image;
+
+
+                    photoButtons.forEach(
+                        item =>
+                            item.classList.remove(
+                                "is-active"
+                            )
+                    );
+
+                    button.classList.add(
+                        "is-active"
+                    );
+
+
+                    if (photoCaption) {
+
+                        photoCaption.textContent =
+                            "Original product photograph";
+
+                    }
+
+                }
+            );
+
+        });
 
     }
 
