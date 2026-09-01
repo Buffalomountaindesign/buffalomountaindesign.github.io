@@ -346,6 +346,27 @@ a:focus-visible {
     letter-spacing: -0.03em;
 }
 
+.image-disclosure {
+    max-width: 680px;
+    margin-top: 24px;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: #777167;
+}
+
+.shop-image-disclosure {
+    margin-top: 24px;
+}
+
+.thumbnail-note {
+    margin: -7px 0 8px;
+    font-size: 0.56rem;
+    line-height: 1.4;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: #918a7e;
+}
+
 
 /* ---------- CATEGORY GRID ---------- */
 
@@ -766,20 +787,73 @@ footer {
     min-height: calc(100vh - 92px);
 }
 
+.product-detail-media {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(24px, 3.5vw, 56px);
+    background: #ebe7dd;
+}
+
 .product-detail-image {
-    min-height: 720px;
+    width: 100%;
+    min-height: 640px;
     display: grid;
     place-items: center;
-    padding: clamp(24px, 4vw, 64px);
-    background: #ebe7dd;
+    background: #f4f0e8;
 }
 
 .product-detail-image img {
     width: 100%;
     height: 100%;
-    max-height: 820px;
+    max-height: 780px;
     object-fit: contain;
     object-position: center;
+}
+
+.product-photo-caption {
+    margin-top: 14px;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #817b70;
+}
+
+.product-photo-thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+.product-photo-thumb {
+    width: 74px;
+    height: 74px;
+    padding: 4px;
+    border: 1px solid transparent;
+    background: #f4f0e8;
+    cursor: pointer;
+}
+
+.product-photo-thumb.is-active {
+    border-color: var(--charcoal);
+}
+
+.product-photo-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.product-image-transparency {
+    max-width: 540px;
+    margin-top: 26px;
+    padding: 16px 18px;
+    border-left: 1px solid #bdb5a8;
+    font-size: 0.75rem;
+    line-height: 1.7;
+    color: #777167;
 }
 
 .product-detail-info {
@@ -1211,13 +1285,16 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .product-detail-image {
-        min-height: 0;
+    .product-detail-media {
         padding: clamp(20px, 5vw, 48px);
     }
 
+    .product-detail-image {
+        min-height: 520px;
+    }
+
     .product-detail-image img {
-        max-height: 760px;
+        max-height: 720px;
         object-fit: contain;
     }
 
@@ -1237,6 +1314,20 @@ footer {
    ========================================================= */
 
 @media (max-width: 700px) {
+
+    .product-detail-media {
+        padding: 18px;
+    }
+
+    .product-detail-image {
+        min-height: 380px;
+    }
+
+    .product-photo-thumb {
+        width: 64px;
+        height: 64px;
+    }
+
 
     .product-meta-row {
         grid-template-columns: 1fr;
