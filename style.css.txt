@@ -1714,3 +1714,73 @@ footer {
     }
 
 }
+
+
+/* =========================================================
+   PRODUCT CARD DEPTH — TEXT CONTAINMENT FIX
+   Keeps text inside the card while preserving image depth.
+   ========================================================= */
+
+/* Clip visual effects to the physical card boundary */
+.product-card-link,
+.shop-product-card .product-card-link,
+.category-card {
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Keep product imagery dimensional */
+.product-image,
+.shop-product-image,
+.category-image {
+    z-index: 1;
+}
+
+/* Text stays on the card surface instead of projecting outward */
+.product-card h3,
+.shop-product-card h2,
+.category-card h3,
+.product-price,
+.product-category,
+.thumbnail-note,
+.view-piece {
+    z-index: 3;
+    transform: none !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+}
+
+/* Keep the moving sheen underneath readable text */
+.product-card-link::after,
+.shop-product-card .product-card-link::after,
+.category-card::after {
+    z-index: 2;
+}
+
+/* Ensure common text/content wrappers never exceed the card */
+.product-card-content,
+.product-info,
+.product-card-info,
+.shop-product-info,
+.category-card-content {
+    position: relative;
+    z-index: 3;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* On hover, text remains completely contained */
+.product-card.is-depth-active,
+.shop-product-card.is-depth-active,
+.category-card.is-depth-active {
+    overflow: visible;
+}
+
+.product-card.is-depth-active .product-card-link,
+.shop-product-card.is-depth-active .product-card-link,
+.category-card.is-depth-active {
+    overflow: hidden;
+}
