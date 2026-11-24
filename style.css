@@ -1572,3 +1572,237 @@ footer {
     }
 
 }
+
+
+/* =========================================================
+   DEPTH + MOTION LAYER
+   ========================================================= */
+
+:root {
+    --motion-perspective: 1200px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.hero-carousel {
+    perspective: var(--motion-perspective);
+    isolation: isolate;
+}
+
+.hero-carousel-copy,
+.hero-carousel-visual {
+    transform-style: preserve-3d;
+}
+
+.hero-carousel-copy {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-copy-inner {
+    position: relative;
+    z-index: 2;
+    transform: translateZ(18px);
+}
+
+.hero-carousel-controls {
+    position: relative;
+    z-index: 2;
+    transform: translateZ(10px);
+}
+
+.hero-carousel-visual {
+    will-change: transform;
+    transition:
+        transform 260ms ease,
+        filter 260ms ease;
+}
+
+.hero-carousel-visual.is-depth-active {
+    filter: saturate(1.015) contrast(1.01);
+}
+
+.ambient-beads {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.ambient-bead {
+    position: absolute;
+    display: block;
+    border-radius: 999px;
+    border: 1px solid rgba(114, 91, 62, 0.18);
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgba(255,255,255,0.88) 0%,
+            rgba(225,217,203,0.62) 28%,
+            rgba(114,91,62,0.18) 62%,
+            rgba(114,91,62,0.08) 100%
+        );
+    box-shadow:
+        inset -5px -6px 12px rgba(66,54,40,0.08),
+        0 12px 30px rgba(50,42,33,0.06);
+    opacity: 0.62;
+    will-change: transform;
+}
+
+.ambient-bead--1 { width: 42px; height: 42px; left: 7%; top: 14%; }
+.ambient-bead--2 { width: 21px; height: 21px; left: 78%; top: 11%; }
+.ambient-bead--3 { width: 31px; height: 31px; left: 82%; top: 44%; }
+.ambient-bead--4 { width: 17px; height: 17px; left: 13%; top: 72%; }
+.ambient-bead--5 { width: 25px; height: 25px; left: 70%; top: 78%; }
+.ambient-bead--6 { width: 13px; height: 13px; left: 46%; top: 8%; }
+
+.product-card,
+.shop-product-card,
+.category-card {
+    transform-style: preserve-3d;
+    perspective: 900px;
+}
+
+.product-card-link,
+.shop-product-card .product-card-link,
+.category-card {
+    transition:
+        transform 220ms ease,
+        filter 220ms ease;
+    will-change: transform;
+}
+
+.product-card.is-tilting .product-card-link,
+.shop-product-card.is-tilting .product-card-link,
+.category-card.is-tilting {
+    filter: saturate(1.015);
+}
+
+.product-image,
+.shop-product-image,
+.category-image {
+    transform: translateZ(14px);
+}
+
+.product-card h3,
+.shop-product-card h2,
+.category-card h3,
+.product-price,
+.view-piece,
+.product-category,
+.thumbnail-note {
+    position: relative;
+    transform: translateZ(22px);
+}
+
+[data-reveal] {
+    opacity: 0;
+    transform:
+        perspective(1100px)
+        translateY(34px)
+        rotateX(1.4deg);
+    transform-origin: center top;
+    transition:
+        opacity 720ms ease,
+        transform 900ms cubic-bezier(.2,.72,.18,1);
+}
+
+[data-reveal].is-revealed {
+    opacity: 1;
+    transform:
+        perspective(1100px)
+        translateY(0)
+        rotateX(0);
+}
+
+.product-detail-image {
+    perspective: 1000px;
+}
+
+.product-detail-image img {
+    transition:
+        transform 300ms ease,
+        filter 300ms ease;
+    will-change: transform;
+}
+
+.product-detail-image.is-depth-active img {
+    filter: contrast(1.01) saturate(1.01);
+}
+
+.story {
+    position: relative;
+    isolation: isolate;
+}
+
+.story::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            circle at 75% 35%,
+            rgba(255,255,255,0.045),
+            transparent 36%
+        );
+    z-index: -1;
+}
+
+@media (max-width: 1000px) {
+
+    .ambient-bead {
+        opacity: 0.42;
+    }
+
+    .product-card-link,
+    .shop-product-card .product-card-link,
+    .category-card,
+    .hero-carousel-visual,
+    .product-detail-image img {
+        transform: none !important;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .ambient-beads {
+        display: none;
+    }
+
+    [data-reveal] {
+        transform: translateY(20px);
+    }
+
+    [data-reveal].is-revealed {
+        transform: translateY(0);
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ambient-beads {
+        display: none;
+    }
+
+    [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .product-card-link,
+    .shop-product-card .product-card-link,
+    .category-card,
+    .hero-carousel-visual,
+    .product-detail-image img {
+        transform: none !important;
+        transition: none !important;
+    }
+
+}
