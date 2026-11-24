@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="hero.js" defer></script>
     <script src="products.js" defer></script>
+    <script src="motion.js" defer></script>
 </head>
 
 <body>
@@ -45,6 +46,15 @@
         aria-label="Buffalo Mountain Design featured imagery">
 
         <div class="hero-carousel-copy">
+
+            <div class="ambient-beads" aria-hidden="true">
+                <span class="ambient-bead ambient-bead--1"></span>
+                <span class="ambient-bead ambient-bead--2"></span>
+                <span class="ambient-bead ambient-bead--3"></span>
+                <span class="ambient-bead ambient-bead--4"></span>
+                <span class="ambient-bead ambient-bead--5"></span>
+                <span class="ambient-bead ambient-bead--6"></span>
+            </div>
 
             <div class="hero-copy-inner">
 
@@ -196,7 +206,7 @@
 
     <!-- CATEGORIES -->
 
-    <section class="categories">
+    <section class="categories depth-section" data-reveal>
 
         <div class="section-heading">
 
@@ -222,7 +232,7 @@
 
     <!-- FEATURED -->
 
-    <section class="featured">
+    <section class="featured depth-section" data-reveal>
 
         <div class="section-heading">
 
@@ -242,7 +252,7 @@
 
     <!-- ABOUT PREVIEW -->
 
-    <section class="story">
+    <section class="story depth-section" data-reveal>
 
         <div class="story-content">
 
