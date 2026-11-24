@@ -1784,3 +1784,109 @@ footer {
 .category-card.is-depth-active {
     overflow: hidden;
 }
+
+
+/* =========================================================
+   PRODUCT CARD TYPOGRAPHY PADDING
+   Adds breathing room around card text without changing images.
+   ========================================================= */
+
+.product-card-content,
+.product-info,
+.product-card-info,
+.shop-product-info,
+.category-card-content {
+    padding-left: 1.15rem;
+    padding-right: 1.15rem;
+    padding-bottom: 1.15rem;
+}
+
+/* If text is rendered directly inside the card link,
+   give those text elements their own safe horizontal inset. */
+.product-card h3,
+.shop-product-card h2,
+.category-card h3,
+.product-price,
+.product-category,
+.thumbnail-note,
+.view-piece {
+    margin-left: 1.15rem;
+    margin-right: 1.15rem;
+}
+
+/* Prevent accidental double-spacing when a known wrapper
+   already owns the padding. */
+.product-card-content h3,
+.product-card-content .product-price,
+.product-card-content .product-category,
+.product-card-content .thumbnail-note,
+.product-card-content .view-piece,
+.product-info h3,
+.product-info .product-price,
+.product-info .product-category,
+.product-info .thumbnail-note,
+.product-info .view-piece,
+.product-card-info h3,
+.product-card-info .product-price,
+.product-card-info .product-category,
+.product-card-info .thumbnail-note,
+.product-card-info .view-piece,
+.shop-product-info h2,
+.shop-product-info .product-price,
+.shop-product-info .product-category,
+.shop-product-info .thumbnail-note,
+.shop-product-info .view-piece,
+.category-card-content h3 {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (max-width: 700px) {
+
+    .product-card-content,
+    .product-info,
+    .product-card-info,
+    .shop-product-info,
+    .category-card-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .product-card h3,
+    .shop-product-card h2,
+    .category-card h3,
+    .product-price,
+    .product-category,
+    .thumbnail-note,
+    .view-piece {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .product-card-content h3,
+    .product-card-content .product-price,
+    .product-card-content .product-category,
+    .product-card-content .thumbnail-note,
+    .product-card-content .view-piece,
+    .product-info h3,
+    .product-info .product-price,
+    .product-info .product-category,
+    .product-info .thumbnail-note,
+    .product-info .view-piece,
+    .product-card-info h3,
+    .product-card-info .product-price,
+    .product-card-info .product-category,
+    .product-card-info .thumbnail-note,
+    .product-card-info .view-piece,
+    .shop-product-info h2,
+    .shop-product-info .product-price,
+    .shop-product-info .product-category,
+    .shop-product-info .thumbnail-note,
+    .shop-product-info .view-piece,
+    .category-card-content h3 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+}
