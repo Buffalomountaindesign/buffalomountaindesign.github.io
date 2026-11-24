@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Buffalo Mountain Design | Indigenous-Led Jewelry in Alberta</title>
+
+    <meta
+        name="description"
+        content="Buffalo Mountain Design is an Indigenous-led studio based in Alberta, Canada, creating beaded jewelry and leather pieces shaped by Atikamekw/Woodland Cree roots and a wider Indigenous perspective informed by Tai-Dum heritage from northern Vietnam.">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="hero.js" defer></script>
+    <script src="products.js" defer></script>
+    <script src="motion.js" defer></script>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a href="index.html" class="brand">
+        BUFFALO MOUNTAIN DESIGN
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <!-- HERO CAROUSEL -->
+
+    <section
+        class="hero-carousel"
+        data-hero-carousel
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Buffalo Mountain Design featured imagery">
+
+        <div class="hero-carousel-copy">
+
+            <div class="ambient-beads" aria-hidden="true">
+                <span class="ambient-bead ambient-bead--1"></span>
+                <span class="ambient-bead ambient-bead--2"></span>
+                <span class="ambient-bead ambient-bead--3"></span>
+                <span class="ambient-bead ambient-bead--4"></span>
+                <span class="ambient-bead ambient-bead--5"></span>
+                <span class="ambient-bead ambient-bead--6"></span>
+            </div>
+
+            <div class="hero-copy-inner">
+
+                <p class="eyebrow">
+                    INDIGENOUS-LED JEWELRY · ALBERTA, CANADA
+                </p>
+
+                <h1>
+                    Made by hand.<br>
+                    Rooted in place.
+                </h1>
+
+                <p class="hero-description">
+                    Beaded jewelry and leather pieces shaped by Indigenous
+                    identity, careful handwork, and a deep relationship with
+                    colour, material and the land around us.
+                </p>
+
+                <a href="shop.html" class="button">
+                    Explore the Collection
+                </a>
+
+            </div>
+
+
+            <div class="hero-carousel-controls">
+
+                <div
+                    class="hero-dots"
+                    role="tablist"
+                    aria-label="Choose hero image">
+
+                    <button
+                        class="hero-dot is-active"
+                        type="button"
+                        data-hero-dot="0"
+                        aria-label="Show image 1"
+                        aria-current="true">
+                    </button>
+
+                    <button
+                        class="hero-dot"
+                        type="button"
+                        data-hero-dot="1"
+                        aria-label="Show image 2">
+                    </button>
+
+                    <button
+                        class="hero-dot"
+                        type="button"
+                        data-hero-dot="2"
+                        aria-label="Show image 3">
+                    </button>
+
+                    <button
+                        class="hero-dot"
+                        type="button"
+                        data-hero-dot="3"
+                        aria-label="Show image 4">
+                    </button>
+
+                </div>
+
+
+                <div class="hero-carousel-actions">
+
+                    <span
+                        class="hero-counter"
+                        aria-live="polite">
+
+                        <span data-hero-current>01</span>
+                        <span class="hero-counter-line"></span>
+                        <span>04</span>
+
+                    </span>
+
+                    <button
+                        class="hero-pause"
+                        type="button"
+                        data-hero-pause
+                        aria-label="Pause carousel">
+                        Pause
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-carousel-visual">
+
+            <figure
+                class="hero-slide hero-slide--lake is-active"
+                data-hero-slide
+                aria-hidden="false">
+
+                <img
+                    src="assets/images/hero-1.webp"
+                    alt="Blue, white and gray beaded necklace displayed beside a mountain lake"
+                    fetchpriority="high">
+
+            </figure>
+
+
+            <figure
+                class="hero-slide hero-slide--meadow-soft"
+                data-hero-slide
+                aria-hidden="true">
+
+                <img
+                    src="assets/images/hero-2.webp"
+                    alt="Light blue beaded necklace suspended among softly lit wildflowers"
+                    loading="lazy">
+
+            </figure>
+
+
+            <figure
+                class="hero-slide hero-slide--meadow-vivid"
+                data-hero-slide
+                aria-hidden="true">
+
+                <img
+                    src="assets/images/hero-3.webp"
+                    alt="Blue beaded necklace suspended in a vivid sunlit meadow"
+                    loading="lazy">
+
+            </figure>
+
+
+            <figure
+                class="hero-slide hero-slide--serpent"
+                data-hero-slide
+                aria-hidden="true">
+
+                <img
+                    src="assets/images/hero-4.webp"
+                    alt="Turquoise beaded serpent artwork arranged on warm sandstone"
+                    loading="lazy">
+
+            </figure>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <section class="categories depth-section" data-reveal>
+
+        <div class="section-heading">
+
+            <p class="eyebrow">THE COLLECTION</p>
+
+            <h2>Shop by Category</h2>
+
+            <p class="image-disclosure">
+                Image note: category and product thumbnails are AI-assisted
+                for a consistent visual presentation. Open a piece to view
+                original product photography.
+            </p>
+
+        </div>
+
+        <div
+            id="home-category-grid"
+            class="category-grid">
+        </div>
+
+    </section>
+
+
+    <!-- FEATURED -->
+
+    <section class="featured depth-section" data-reveal>
+
+        <div class="section-heading">
+
+            <p class="eyebrow">SELECTED WORK</p>
+
+            <h2>Featured Pieces</h2>
+
+        </div>
+
+        <div
+            id="featured-grid"
+            class="product-grid">
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT PREVIEW -->
+
+    <section class="story depth-section" data-reveal>
+
+        <div class="story-content">
+
+            <p class="eyebrow">OUR STORY</p>
+
+            <h2>
+                Distinct roots.
+                A shared respect for craft.
+            </h2>
+
+            <p>
+                Buffalo Mountain Design is an Indigenous-led studio based in
+                Alberta, Canada. It was founded by an Atikamekw/Woodland Cree
+                maker, with marketing and storytelling shaped by a wider
+                Indigenous perspective informed by Tai-Dum heritage from
+                northern Vietnam.
+            </p>
+
+            <a href="about.html" class="text-link">
+                Read Our Story →
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-brand">
+        BUFFALO MOUNTAIN DESIGN
+    </div>
+
+    <p class="footer-note">
+        Indigenous-led beadwork and leather · Alberta, Canada
+    </p>
+
+    <div class="footer-links">
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <p class="copyright">
+        © 2026 Buffalo Mountain Design
+    </p>
+
+</footer>
+
+</body>
+</html>
