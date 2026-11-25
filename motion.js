@@ -11,35 +11,52 @@
             "(hover: hover) and (pointer: fine)"
         );
 
-    const cardSelector =
-        ".product-card, .shop-product-card, .category-card";
-
     const clamp = (value, min, max) =>
         Math.min(Math.max(value, min), max);
+
+    const cardSelector =
+        ".product-card, .shop-product-card";
 
 
     function attachDepth(card) {
 
-        if (
-            card.dataset.depthReady === "true"
-        ) {
+        if (card.dataset.depthReady === "true") {
             return;
         }
 
         card.dataset.depthReady = "true";
 
+        const link =
+            card.querySelector(".product-card-link");
 
-        const target =
-            card.matches(".category-card")
-                ? card
-                : card.querySelector(
-                    ".product-card-link"
-                );
+        const image =
+            card.querySelector(
+                ".product-image, .shop-product-image"
+            );
 
-
-        if (!target) {
+        if (!link) {
             return;
         }
+
+        /*
+         * IMPORTANT:
+         * The hyperlink itself is NEVER transformed.
+         * This keeps its click area fixed and reliable.
+         */
+
+        card.addEventListener(
+            "pointerenter",
+            () => {
+                if (
+                    !reducedMotion.matches &&
+                    finePointer.matches
+                ) {
+                    card.classList.add(
+                        "is-depth-active"
+                    );
+                }
+            }
+        );
 
 
         card.addEventListener(
@@ -48,15 +65,14 @@
 
                 if (
                     reducedMotion.matches ||
-                    !finePointer.matches
+                    !finePointer.matches ||
+                    !image
                 ) {
                     return;
                 }
 
-
                 const rect =
                     card.getBoundingClientRect();
-
 
                 const x =
                     clamp(
@@ -66,7 +82,6 @@
                         1
                     );
 
-
                 const y =
                     clamp(
                         (event.clientY - rect.top)
@@ -75,36 +90,28 @@
                         1
                     );
 
-
-                /* Intentionally restrained:
-                   enough movement to read as depth,
-                   but not a dramatic "gaming card" tilt. */
-
+                /*
+                 * Move only the product image.
+                 * The card/link/text do not move at all.
+                 */
                 const rotateY =
-                    (x - 0.5) * 6.5;
+                    (x - 0.5) * 4.5;
 
                 const rotateX =
-                    (0.5 - y) * 5;
+                    (0.5 - y) * 3.5;
 
-                const translateX =
-                    (x - 0.5) * 2.5;
+                const moveX =
+                    (x - 0.5) * 3;
 
-                const translateY =
-                    -5 + (y - 0.5) * 1.5;
+                const moveY =
+                    (y - 0.5) * 2;
 
-
-                target.style.transform =
-                    `perspective(1200px)
-                     translate3d(${translateX}px, ${translateY}px, 0)
+                image.style.transform =
+                    `perspective(1000px)
+                     translate3d(${moveX}px, ${moveY}px, 24px)
                      rotateX(${rotateX}deg)
                      rotateY(${rotateY}deg)
-                     scale(1.008)`;
-
-
-                card.classList.add(
-                    "is-depth-active"
-                );
-
+                     scale(1.012)`;
             }
         );
 
@@ -113,43 +120,59 @@
             "pointerleave",
             () => {
 
-                target.style.transform = "";
+                if (image) {
+                    image.style.transform = "";
+                }
 
                 card.classList.remove(
                     "is-depth-active"
                 );
-
             }
         );
 
+
+        /*
+         * Keyboard users:
+         * Keep the depth shadow on focus without moving the link.
+         */
+        link.addEventListener(
+            "focus",
+            () => {
+                card.classList.add(
+                    "is-depth-active"
+                );
+            }
+        );
+
+        link.addEventListener(
+            "blur",
+            () => {
+                card.classList.remove(
+                    "is-depth-active"
+                );
+            }
+        );
     }
 
 
     function scanCards() {
 
         document
-            .querySelectorAll(
-                cardSelector
-            )
-            .forEach(
-                attachDepth
-            );
-
+            .querySelectorAll(cardSelector)
+            .forEach(attachDepth);
     }
 
 
-    /* Handles cards already present on page load */
     scanCards();
 
 
-    /* Handles product cards generated later by products.js */
-    const observer =
-        new MutationObserver(
-            scanCards
-        );
-
-
-    observer.observe(
+    /*
+     * Products are dynamically created by products.js,
+     * so watch for newly-added cards.
+     */
+    new MutationObserver(
+        scanCards
+    ).observe(
         document.body,
         {
             childList: true,
