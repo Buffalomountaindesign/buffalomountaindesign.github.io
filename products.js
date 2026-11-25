@@ -162,17 +162,21 @@ if (grid && searchInput && emptyMessage) {
 
         filteredProducts.forEach(product => {
 
-            const card = document.createElement("article");
+            const card = document.createElement("a");
 
             card.className = "shop-product-card";
+
+            card.href = productUrl(product);
+
+            card.setAttribute(
+                "aria-label",
+                `View ${product.name}`
+            );
 
 
             card.innerHTML = `
 
-                <a
-                    class="product-card-link"
-                    href="${productUrl(product)}"
-                    aria-label="View ${product.name}">
+                <div class="product-card-link">
 
                     <div class="shop-product-image">
                         <img
@@ -207,7 +211,7 @@ if (grid && searchInput && emptyMessage) {
                         View Piece →
                     </p>
 
-                </a>
+                </div>
 
             `;
 
@@ -392,19 +396,26 @@ if (featuredGrid) {
         .forEach(product => {
 
             const card =
-                document.createElement("article");
+                document.createElement("a");
 
 
             card.className =
                 "product-card";
 
 
+            card.href =
+                productUrl(product);
+
+
+            card.setAttribute(
+                "aria-label",
+                `View ${product.name}`
+            );
+
+
             card.innerHTML = `
 
-                <a
-                    class="product-card-link"
-                    href="${productUrl(product)}"
-                    aria-label="View ${product.name}">
+                <div class="product-card-link">
 
                     <div class="product-image">
 
@@ -441,7 +452,7 @@ if (featuredGrid) {
                         View Piece →
                     </p>
 
-                </a>
+                </div>
 
             `;
 
