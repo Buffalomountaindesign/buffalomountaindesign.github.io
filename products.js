@@ -6,6 +6,7 @@ const products = [
         category: "necklaces",
         price: "$200 CAD",
         image: "assets/images/necklace-1.png",
+        hoverImage: "assets/images/desert-oasis-real-1.jpg",
         thumbnailAI: true,
         realImages: [
             "assets/images/desert-oasis-real-1.jpg"
@@ -180,9 +181,22 @@ if (grid && searchInput && emptyMessage) {
 
                     <div class="shop-product-image">
                         <img
+                            class="card-image-primary"
                             src="${product.image}"
                             alt="${product.name}"
                             loading="lazy">
+
+                        ${
+                            product.hoverImage
+                                ? `
+                                    <img
+                                        class="card-image-hover"
+                                        src="${product.hoverImage}"
+                                        alt="${product.name} — real product photograph"
+                                        loading="lazy">
+                                `
+                                : ""
+                        }
                     </div>
 
                     ${
@@ -420,9 +434,22 @@ if (featuredGrid) {
                     <div class="product-image">
 
                         <img
+                            class="card-image-primary"
                             src="${product.image}"
                             alt="${product.name}"
                             loading="lazy">
+
+                        ${
+                            product.hoverImage
+                                ? `
+                                    <img
+                                        class="card-image-hover"
+                                        src="${product.hoverImage}"
+                                        alt="${product.name} — real product photograph"
+                                        loading="lazy">
+                                `
+                                : ""
+                        }
 
                     </div>
 
