@@ -26,7 +26,11 @@
 
         card.dataset.depthReady = "true";
 
-        const link =
+        /*
+         * The OUTER card is now the real <a> link.
+         * The inner .product-card-link is only a visual transform layer.
+         */
+        const visualLayer =
             card.querySelector(".product-card-link");
 
         const image =
@@ -34,19 +38,15 @@
                 ".product-image, .shop-product-image"
             );
 
-        if (!link) {
+        if (!visualLayer) {
             return;
         }
 
-        /*
-         * IMPORTANT:
-         * The hyperlink itself is NEVER transformed.
-         * This keeps its click area fixed and reliable.
-         */
 
         card.addEventListener(
             "pointerenter",
             () => {
+
                 if (
                     !reducedMotion.matches &&
                     finePointer.matches
@@ -55,6 +55,7 @@
                         "is-depth-active"
                     );
                 }
+
             }
         );
 
@@ -91,8 +92,8 @@
                     );
 
                 /*
-                 * Move only the product image.
-                 * The card/link/text do not move at all.
+                 * Only the image gets perspective motion.
+                 * The actual link/card never moves.
                  */
                 const rotateY =
                     (x - 0.5) * 4.5;
@@ -127,15 +128,12 @@
                 card.classList.remove(
                     "is-depth-active"
                 );
+
             }
         );
 
 
-        /*
-         * Keyboard users:
-         * Keep the depth shadow on focus without moving the link.
-         */
-        link.addEventListener(
+        card.addEventListener(
             "focus",
             () => {
                 card.classList.add(
@@ -144,7 +142,8 @@
             }
         );
 
-        link.addEventListener(
+
+        card.addEventListener(
             "blur",
             () => {
                 card.classList.remove(
@@ -152,6 +151,7 @@
                 );
             }
         );
+
     }
 
 
@@ -166,10 +166,6 @@
     scanCards();
 
 
-    /*
-     * Products are dynamically created by products.js,
-     * so watch for newly-added cards.
-     */
     new MutationObserver(
         scanCards
     ).observe(
