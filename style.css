@@ -1890,3 +1890,74 @@ footer {
     }
 
 }
+
+
+/* =========================================================
+   PRODUCT CARD CLICKABILITY FIX
+   The hyperlink stays stationary. Visual depth happens inside it.
+   ========================================================= */
+
+/* Make the full card link the reliable click target */
+.product-card-link,
+.shop-product-card .product-card-link {
+    display: block;
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+    /* Critical: do not move/rotate the clickable anchor itself. */
+    transform: none !important;
+}
+
+/* Let all clicks pass through card contents to the anchor */
+.product-card-link > *,
+.shop-product-card .product-card-link > * {
+    pointer-events: none;
+}
+
+/* The card shell remains fixed while its shadow changes */
+.product-card,
+.shop-product-card {
+    position: relative;
+    transform: none !important;
+    transition:
+        box-shadow 260ms cubic-bezier(.2,.72,.18,1),
+        filter 260ms ease;
+}
+
+/* Noticeable depth without moving the click target */
+.product-card:hover,
+.product-card.is-depth-active,
+.shop-product-card:hover,
+.shop-product-card.is-depth-active {
+    box-shadow:
+        0 28px 56px rgba(39, 33, 25, 0.15),
+        0 10px 20px rgba(39, 33, 25, 0.075);
+}
+
+/* Only the image moves in depth */
+.product-image,
+.shop-product-image {
+    transform-origin: center center;
+    will-change: transform;
+    pointer-events: none;
+}
+
+/* The typography remains completely stationary and clickable through */
+.product-card h3,
+.shop-product-card h2,
+.product-price,
+.product-category,
+.thumbnail-note,
+.view-piece {
+    transform: none !important;
+    pointer-events: none;
+}
+
+/* Disable the old sheen layer as a possible stacking complication */
+.product-card-link::after,
+.shop-product-card .product-card-link::after {
+    display: none !important;
+}
