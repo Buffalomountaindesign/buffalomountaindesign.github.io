@@ -1999,3 +1999,77 @@ a.shop-product-card:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 4px;
 }
+
+
+/* =========================================================
+   DESERT OASIS — REAL PHOTO ON HOVER
+   ========================================================= */
+
+.product-image,
+.shop-product-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image .card-image-primary,
+.product-image .card-image-hover,
+.shop-product-image .card-image-primary,
+.shop-product-image .card-image-hover {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition:
+        opacity 360ms ease,
+        transform 420ms cubic-bezier(.2,.72,.18,1);
+}
+
+.product-image .card-image-hover,
+.shop-product-image .card-image-hover {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0;
+}
+
+.product-image .card-image-primary,
+.shop-product-image .card-image-primary {
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+}
+
+/* Only products with a second image are affected */
+a.product-card:hover .card-image-primary:has(+ .card-image-hover),
+a.shop-product-card:hover .card-image-primary:has(+ .card-image-hover),
+a.product-card:focus-visible .card-image-primary:has(+ .card-image-hover),
+a.shop-product-card:focus-visible .card-image-primary:has(+ .card-image-hover) {
+    opacity: 0;
+}
+
+a.product-card:hover .card-image-hover,
+a.shop-product-card:hover .card-image-hover,
+a.product-card:focus-visible .card-image-hover,
+a.shop-product-card:focus-visible .card-image-hover {
+    opacity: 1;
+    transform: scale(1.012);
+}
+
+@media (hover: none), (pointer: coarse) {
+    .card-image-hover {
+        display: none !important;
+    }
+
+    .card-image-primary {
+        opacity: 1 !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .product-image .card-image-primary,
+    .product-image .card-image-hover,
+    .shop-product-image .card-image-primary,
+    .shop-product-image .card-image-hover {
+        transition: none !important;
+    }
+}
