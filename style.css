@@ -2073,3 +2073,82 @@ a.shop-product-card:focus-visible .card-image-hover {
         transition: none !important;
     }
 }
+
+
+/* =========================================================
+   PRODUCT CARD — COLOUR PALETTE BAND
+   Currently used by Desert Oasis only.
+   ========================================================= */
+
+.card-colour-palette {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #f4f0e8;
+    border-top: 1px solid rgba(55, 47, 37, 0.08);
+    border-bottom: 1px solid rgba(55, 47, 37, 0.10);
+    pointer-events: none;
+}
+
+/* Small, obvious label without taking much vertical space */
+.card-colour-palette-label {
+    padding: 0.42rem 1.15rem 0.34rem;
+    font-size: 0.66rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(45, 39, 31, 0.72);
+}
+
+/* Swatches span the entire width of the card */
+.card-colour-swatches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    height: 18px;
+    overflow: hidden;
+}
+
+/* Each swatch is an equal-width strip */
+.card-colour-swatch {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--swatch-colour);
+}
+
+/* Give transparent aquamarine a subtle glass-like highlight
+   while preserving its actual palette colour. */
+.card-colour-swatch:first-child {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.18),
+            rgba(255,255,255,0.03)
+        ),
+        var(--swatch-colour);
+}
+
+/* Keep the palette perfectly flat while the image above gets depth. */
+.card-colour-palette,
+.card-colour-palette * {
+    transform: none !important;
+}
+
+/* Mobile: same full-width band, slightly tighter label */
+@media (max-width: 700px) {
+
+    .card-colour-palette-label {
+        padding:
+            0.38rem 1rem
+            0.30rem;
+        font-size: 0.62rem;
+    }
+
+    .card-colour-swatches {
+        height: 16px;
+    }
+
+}
