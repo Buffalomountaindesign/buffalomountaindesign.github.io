@@ -2152,3 +2152,62 @@ a.shop-product-card:focus-visible .card-image-hover {
     }
 
 }
+
+
+/* =========================================================
+   DESERT OASIS PALETTE — SPACING / LABEL FIX
+   ========================================================= */
+
+/* Remove the awkward gap between image and palette */
+.product-image,
+.shop-product-image {
+    margin-bottom: 0 !important;
+}
+
+/* Keep the palette flush to the image */
+.card-colour-palette {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Slightly tighten the palette label */
+.card-colour-palette-label {
+    padding-top: 0.34rem;
+    padding-bottom: 0.28rem;
+}
+
+/* Give the AI thumbnail note its own space below the palette */
+.thumbnail-note {
+    position: relative;
+    z-index: 4;
+    display: block;
+    margin-top: 0.72rem !important;
+    margin-bottom: 0.42rem !important;
+    padding-top: 0 !important;
+    line-height: 1.25;
+}
+
+/* On cards with a palette, keep the note visually separated */
+.card-colour-palette + .thumbnail-note {
+    margin-top: 0.78rem !important;
+}
+
+/* Ensure the note never overlaps the swatches */
+.card-colour-palette,
+.card-colour-palette-label,
+.card-colour-swatches,
+.card-colour-swatch {
+    position: relative;
+    z-index: 2;
+}
+
+.thumbnail-note {
+    transform: none !important;
+}
+
+@media (max-width: 700px) {
+    .thumbnail-note {
+        margin-top: 0.65rem !important;
+        margin-bottom: 0.38rem !important;
+    }
+}
