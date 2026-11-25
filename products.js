@@ -7,6 +7,25 @@ const products = [
         price: "$200 CAD",
         image: "assets/images/necklace-1.png",
         hoverImage: "assets/images/desert-oasis-real-1.jpg",
+
+        colourPalette: [
+            {
+                name: "Transparent Aquamarine",
+                hex: "#8BB6B2"
+            },
+            {
+                name: "Metallic Antique Gold",
+                hex: "#CC9735"
+            },
+            {
+                name: "Deep Cobalt Blue",
+                hex: "#202775"
+            },
+            {
+                name: "Matte Seafoam Green",
+                hex: "#7FB49F"
+            }
+        ],
         thumbnailAI: true,
         realImages: [
             "assets/images/desert-oasis-real-1.jpg"
@@ -198,6 +217,37 @@ if (grid && searchInput && emptyMessage) {
                                 : ""
                         }
                     </div>
+
+                    ${
+                        product.colourPalette
+                            ? `
+                                <div
+                                    class="card-colour-palette"
+                                    aria-label="Product colour palette">
+
+                                    <div class="card-colour-palette-label">
+                                        Colour Palette
+                                    </div>
+
+                                    <div class="card-colour-swatches">
+                                        ${product.colourPalette
+                                            .map(
+                                                colour => `
+                                                    <span
+                                                        class="card-colour-swatch"
+                                                        style="--swatch-colour: ${colour.hex}"
+                                                        title="${colour.name}"
+                                                        aria-label="${colour.name}">
+                                                    </span>
+                                                `
+                                            )
+                                            .join("")}
+                                    </div>
+
+                                </div>
+                            `
+                            : ""
+                    }
 
                     ${
                         product.thumbnailAI
@@ -452,6 +502,37 @@ if (featuredGrid) {
                         }
 
                     </div>
+
+                    ${
+                        product.colourPalette
+                            ? `
+                                <div
+                                    class="card-colour-palette"
+                                    aria-label="Product colour palette">
+
+                                    <div class="card-colour-palette-label">
+                                        Colour Palette
+                                    </div>
+
+                                    <div class="card-colour-swatches">
+                                        ${product.colourPalette
+                                            .map(
+                                                colour => `
+                                                    <span
+                                                        class="card-colour-swatch"
+                                                        style="--swatch-colour: ${colour.hex}"
+                                                        title="${colour.name}"
+                                                        aria-label="${colour.name}">
+                                                    </span>
+                                                `
+                                            )
+                                            .join("")}
+                                    </div>
+
+                                </div>
+                            `
+                            : ""
+                    }
 
                     ${
                         product.thumbnailAI
